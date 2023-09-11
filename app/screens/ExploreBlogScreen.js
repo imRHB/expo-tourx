@@ -122,7 +122,7 @@ const BLOGS = [
         address: "Thailand",
         img: "https://i.ibb.co/q7tjShD/thailand.jpg",
         description:
-            "With summer right around the corner and boat rental services at an all-time high, it’s time to take the boating experience to the next level. Imagine the perfect hot weather, cool crystal clear waters at your feet, and you on the deck of a white yacht, preparing to take the most refreshing dive of your life. Can life get better than that?",
+            "With summer right around the corner and boat rental services at an all-time high, it's time to take the boating experience to the next level. Imagine the perfect hot weather, cool crystal clear waters at your feet, and you on the deck of a white yacht, preparing to take the most refreshing dive of your life. Can life get better than that?",
         cost: 2100,
         category: "Weekend Tour",
         rating: 4.5,

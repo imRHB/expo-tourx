@@ -35,7 +35,7 @@ const BlogCard = ({ blog }) => {
                         <Text style={{ color: "#777" }}>{location}</Text>
                     </View>
                     <View style={{ marginTop: 8 }}>
-                        <Text style={{ fontSize: 20, fontWeight: 700 }}>
+                        <Text style={{ fontSize: 18, fontWeight: 700 }}>
                             {title}
                         </Text>
                     </View>
