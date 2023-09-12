@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FlatList, ScrollView, StyleSheet, View } from "react-native";
+import { useEffect, useState } from "react";
+import { FlatList, ScrollView, View } from "react-native";
 import BlogCard from "../components/BlogCard";
 
 const BLOGS = [
@@ -134,7 +134,30 @@ const BLOGS = [
 ];
 
 const ExploreBlogScreen = () => {
-    const [blogs, setBlogs] = useState(BLOGS);
+    const [blogs, setBlogs] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const getBlogs = async () => {
+        setIsLoading(true);
+
+        try {
+            const response = await fetch(
+                "https://tour-x-amky.onrender.com/blogs"
+            );
+            const result = await response.json();
+            setBlogs(result);
+            setIsLoading(false);
+        } catch (error) {
+            console.log("🚀 ~ file: index.js:16 ~ getBlogs ~ error:", error);
+            setIsLoading(false);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getBlogs();
+    }, []);
 
     return (
         <View>
@@ -147,7 +170,6 @@ const ExploreBlogScreen = () => {
                     data={blogs}
                     renderItem={({ item }) => <BlogCard blog={item} />}
                     keyExtractor={(item) => item._id}
-                    horizontal={false}
                 />
             </ScrollView>
         </View>
@@ -155,5 +177,3 @@ const ExploreBlogScreen = () => {
 };
 
 export default ExploreBlogScreen;
-
-const styles = StyleSheet.create({});

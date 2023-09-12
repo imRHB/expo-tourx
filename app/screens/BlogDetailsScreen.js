@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     Image,
     Pressable,
@@ -25,6 +26,31 @@ const BLOG = {
 };
 
 const BlogDetailsScreen = () => {
+    const [blog, setBlog] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
+
+    const getBlog = async () => {
+        setIsLoading(true);
+
+        try {
+            const response = await fetch(
+                `https://tour-x-amky.onrender.com/blogs/${_id}`
+            );
+            const data = await response.json();
+            setBlog(data);
+            setIsLoading(false);
+        } catch (error) {
+            console.log("🚀 ~ file: index.js:16 ~ getBlogs ~ error:", error);
+            setIsLoading(false);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        getBlog();
+    }, []);
+
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
