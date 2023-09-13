@@ -1,5 +1,11 @@
-import AppNavigation from "./app/navigation/AppNavigation";
+import { NavigationContainer } from "@react-navigation/native";
+
+import TabNavigator from "./app/navigation/TabNavigator";
 
 export default function App() {
-    return <AppNavigation />;
+    return (
+        <NavigationContainer>
+            <TabNavigator />
+        </NavigationContainer>
+    );
 }

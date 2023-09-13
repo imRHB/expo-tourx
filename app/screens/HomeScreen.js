@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import BlogCard from "../components/BlogCard";
@@ -16,7 +16,10 @@ export default function HomeScreen() {
                 "https://tour-x-amky.onrender.com/blogs"
             );
             const data = await response.json();
-            setBlogs(data.blogs);
+            const highRatedBlogs = data.blogs
+                ?.map((blog) => (blog.rating === 5 ? blog : ""))
+                .filter(Boolean);
+            setBlogs(highRatedBlogs);
             setIsLoading(false);
         } catch (error) {
             console.log("🚀 ~ file: index.js:16 ~ getBlogs ~ error:", error);
@@ -36,12 +39,12 @@ export default function HomeScreen() {
                 {isLoading ? (
                     <View
                         style={{
-                            marginTop: "50%",
                             alignItems: "center",
                             justifyContent: "center",
+                            margin: "50%",
                         }}
                     >
-                        <Text>loading...</Text>
+                        <ActivityIndicator size="large" color="#ef4444" />
                     </View>
                 ) : (
                     <FlatList

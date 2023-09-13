@@ -4,11 +4,13 @@ import { Image, Pressable, Text, View } from "react-native";
 export default function BlogCard({ blog }) {
     const navigation = useNavigation();
 
-    const { _id, title, location, address, img } = blog;
+    const { title, location, address, img } = blog;
 
     return (
         <Pressable
-            onPress={() => navigation.navigate("BlogDetails", { item: blog })}
+            onPress={() =>
+                navigation.navigate("BlogDetailsScreen", { item: blog })
+            }
             style={{
                 marginVertical: 16,
                 backgroundColor: "#F8F8F8",

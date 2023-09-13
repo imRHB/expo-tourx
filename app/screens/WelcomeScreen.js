@@ -24,7 +24,7 @@ export default function WelcomeScreen({ navigation }) {
             >
                 Share Your Tour Experience
             </Text>
-            <View style={{ marginBottom: "50%" }} />
+            <View style={{ margin: "50%" }} />
             <TouchableOpacity
                 onPress={() => navigation.navigate("Home")}
                 style={{
