@@ -1,11 +1,10 @@
-// import { Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import { FlatList, ScrollView, Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import BlogCard from "../../components/BlogCard";
+import BlogCard from "../components/BlogCard";
 
-export default function BlogTab() {
+export default function HomeScreen() {
     const [blogs, setBlogs] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -33,15 +32,11 @@ export default function BlogTab() {
 
     return (
         <SafeAreaView style={{ marginHorizontal: 8 }}>
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-            >
-                <Stack.Screen options={{ header: () => null }} />
+            <View>
                 {isLoading ? (
                     <View
                         style={{
-                            marginVertical: 50,
+                            marginTop: "50%",
                             alignItems: "center",
                             justifyContent: "center",
                         }}
@@ -53,9 +48,10 @@ export default function BlogTab() {
                         data={blogs}
                         renderItem={({ item }) => <BlogCard blog={item} />}
                         keyExtractor={(item) => item._id}
+                        showsVerticalScrollIndicator={false}
                     />
                 )}
-            </ScrollView>
+            </View>
         </SafeAreaView>
     );
 }

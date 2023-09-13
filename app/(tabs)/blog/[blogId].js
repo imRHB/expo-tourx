@@ -1,4 +1,4 @@
-import { Stack, useGlobalSearchParams } from "expo-router";
+// import { Stack, useGlobalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import {
     Image,

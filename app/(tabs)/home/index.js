@@ -1,4 +1,4 @@
-import { Link, Stack } from "expo-router";
+// import { Link, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { Image, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
