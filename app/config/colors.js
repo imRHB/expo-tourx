@@ -1,4 +1,6 @@
 export default {
-    primary: "#8A2BE2",
-    dark: "#18181B",
+    PRIMARY: "#EF4444",
+    LIGHT: "#F8F8F8",
+    DARK: "#18181B",
+    GRAY: "#3F3F46",
 };

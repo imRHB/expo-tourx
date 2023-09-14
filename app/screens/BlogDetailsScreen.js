@@ -1,29 +1,33 @@
-import { Image, Pressable, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import colors from "../config/colors";
+import spacing from "../config/spacing";
 
 const BlogDetailsScreen = ({ navigation, route }) => {
     const { item } = route.params;
 
     return (
-        <SafeAreaView style={{ marginHorizontal: 8 }}>
+        <SafeAreaView style={{ marginHorizontal: spacing.SM }}>
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
             >
                 <View
                     style={{
-                        marginVertical: 16,
+                        marginVertical: spacing.MD,
                     }}
                 >
                     <Image
                         source={{ uri: item.img }}
                         resizeMode="contain"
                         style={{
-                            borderRadius: 8,
+                            borderRadius: spacing.SM,
                             aspectRatio: 16 / 9,
                         }}
                     />
-                    <View style={{ paddingVertical: 16 }}>
+                    <View style={{ paddingVertical: spacing.MD }}>
                         <View
                             style={{
                                 flexDirection: "row",
@@ -32,43 +36,69 @@ const BlogDetailsScreen = ({ navigation, route }) => {
                             }}
                         >
                             <View style={{ flexDirection: "row" }}>
-                                <Text style={{ color: "#777" }}>
+                                <Text style={{ color: colors.GRAY }}>
                                     {item.address}
                                 </Text>
                                 <Text>, </Text>
-                                <Text style={{ color: "#777" }}>
+                                <Text style={{ color: colors.GRAY }}>
                                     {item.location}
                                 </Text>
                             </View>
-                            <Text style={{ color: "#777" }}>
+                            <Text style={{ color: colors.GRAY }}>
                                 {item.category}
                             </Text>
                         </View>
                         <View
                             style={{
-                                marginVertical: 8,
+                                marginVertical: spacing.SM,
                                 flexDirection: "row",
                                 alignItems: "center",
                                 justifyContent: "space-between",
                             }}
                         >
-                            <Text style={{ fontSize: 24, fontWeight: 700 }}>
+                            <Text
+                                style={{
+                                    fontSize: spacing.LG,
+                                    fontWeight: 700,
+                                }}
+                            >
                                 ${item.cost}
                             </Text>
-                            <Text style={{ color: "#777" }}>
-                                Rating: {item.rating}
-                            </Text>
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        color: colors.GRAY,
+                                        fontSize: spacing.BASE,
+                                        fontWeight: "700",
+                                    }}
+                                >
+                                    {item.rating}
+                                </Text>
+                                <MaterialCommunityIcons
+                                    name="star"
+                                    size={spacing.BASE}
+                                    color={colors.PRIMARY}
+                                    marginLeft={spacing.XXS}
+                                />
+                            </View>
                         </View>
-                        <View style={{ marginVertical: 8 }}>
-                            <Text style={{ fontSize: 18, fontWeight: 700 }}>
+                        <View style={{ marginVertical: spacing.SM }}>
+                            <Text
+                                style={{
+                                    fontSize: spacing.LG,
+                                    fontWeight: 700,
+                                }}
+                            >
                                 {item.title}
                             </Text>
                         </View>
                         <View>
-                            <Text style={{ fontSize: 16 }}>
-                                {item.description}
-                            </Text>
-                            <Text style={{ fontSize: 16 }}>
+                            <Text style={{ fontSize: spacing.BASE }}>
                                 {item.description}
                             </Text>
                         </View>
@@ -78,6 +108,7 @@ const BlogDetailsScreen = ({ navigation, route }) => {
                             flexDirection: "row",
                             alignItems: "center",
                             justifyContent: "space-between",
+                            marginVertical: spacing.BASE,
                         }}
                     >
                         <View
@@ -88,8 +119,8 @@ const BlogDetailsScreen = ({ navigation, route }) => {
                         >
                             <Text
                                 style={{
-                                    color: "#777",
-                                    fontSize: 18,
+                                    color: colors.GRAY,
+                                    fontSize: spacing.BASE,
                                     fontWeight: 700,
                                 }}
                             >
@@ -97,36 +128,37 @@ const BlogDetailsScreen = ({ navigation, route }) => {
                             </Text>
                             <Text
                                 style={{
-                                    color: "#8A2BE2",
-                                    fontSize: 18,
+                                    color: colors.PRIMARY,
+                                    fontSize: spacing.BASE,
                                     fontWeight: 700,
                                 }}
                             >
                                 {item.name}
                             </Text>
                         </View>
-                        <View
+                        <TouchableOpacity
+                            onPress={() => alert("Add blog")}
                             style={{
-                                paddingVertical: 4,
-                                paddingHorizontal: 16,
-                                borderWidth: 1,
-                                borderRadius: 4,
-                                borderColor: "#8A2BE2",
-                                backgroundColor: "#8A2BE2",
+                                width: "50%",
+                                paddingVertical: spacing.SM,
+                                paddingHorizontal: spacing.BASE,
+                                borderWidth: spacing.XXS,
+                                borderRadius: spacing.XS,
+                                borderColor: colors.PRIMARY,
+                                backgroundColor: colors.PRIMARY,
                             }}
                         >
-                            <Pressable onPress={() => alert("Add blog")}>
-                                <Text
-                                    style={{
-                                        fontSize: 18,
-                                        fontWeight: 700,
-                                        color: "#FFF",
-                                    }}
-                                >
-                                    Add Blog
-                                </Text>
-                            </Pressable>
-                        </View>
+                            <Text
+                                style={{
+                                    fontSize: spacing.BASE,
+                                    fontWeight: 700,
+                                    textAlign: "center",
+                                    color: colors.LIGHT,
+                                }}
+                            >
+                                Add Blog
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </ScrollView>

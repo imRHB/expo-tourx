@@ -3,6 +3,8 @@ import { ActivityIndicator, FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import BlogCard from "../components/BlogCard";
+import colors from "../config/colors";
+import spacing from "../config/spacing";
 
 export default function HomeScreen() {
     const [blogs, setBlogs] = useState([]);
@@ -34,7 +36,7 @@ export default function HomeScreen() {
     }, []);
 
     return (
-        <SafeAreaView style={{ marginHorizontal: 8 }}>
+        <SafeAreaView style={{ marginHorizontal: spacing.SM }}>
             <View>
                 {isLoading ? (
                     <View
@@ -44,7 +46,10 @@ export default function HomeScreen() {
                             margin: "50%",
                         }}
                     >
-                        <ActivityIndicator size="large" color="#ef4444" />
+                        <ActivityIndicator
+                            size="large"
+                            color={colors.PRIMARY}
+                        />
                     </View>
                 ) : (
                     <FlatList

@@ -1,6 +1,9 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import colors from "../config/colors";
+import spacing from "../config/spacing";
+
 export default function WelcomeScreen({ navigation }) {
     return (
         <SafeAreaView
@@ -8,18 +11,24 @@ export default function WelcomeScreen({ navigation }) {
                 flex: 1,
                 alignItems: "center",
                 justifyContent: "center",
-                marginHorizontal: 8,
+                marginHorizontal: spacing.SM,
             }}
         >
-            <Text style={{ fontSize: 48, fontWeight: "900", color: "#ef4444" }}>
+            <Text
+                style={{
+                    fontSize: spacing["3XL"],
+                    fontWeight: "900",
+                    color: colors.PRIMARY,
+                }}
+            >
                 TourX
             </Text>
             <Text
                 style={{
-                    fontSize: 20,
+                    fontSize: spacing.BASE,
                     fontWeight: "500",
-                    color: "#3f3f46",
-                    marginTop: 4,
+                    color: colors.GRAY,
+                    marginTop: spacing.XS,
                 }}
             >
                 Share Your Tour Experience
@@ -28,16 +37,16 @@ export default function WelcomeScreen({ navigation }) {
             <TouchableOpacity
                 onPress={() => navigation.navigate("Home")}
                 style={{
-                    backgroundColor: "#ef4444",
+                    backgroundColor: colors.PRIMARY,
                     width: "80%",
-                    padding: 16,
-                    borderRadius: 8,
+                    padding: spacing.BASE,
+                    borderRadius: spacing.SM,
                 }}
             >
                 <Text
                     style={{
-                        color: "#FAFAFA",
-                        fontSize: 20,
+                        color: colors.LIGHT,
+                        fontSize: spacing.LG,
                         fontWeight: "700",
                         textAlign: "center",
                     }}

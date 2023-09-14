@@ -3,6 +3,7 @@ import { ActivityIndicator, FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import BlogCard from "../components/BlogCard";
+import colors from "../config/colors";
 
 const ExploreBlogScreen = () => {
     const [blogs, setBlogs] = useState([]);
@@ -41,7 +42,10 @@ const ExploreBlogScreen = () => {
                             margin: "50%",
                         }}
                     >
-                        <ActivityIndicator size="large" color="#ef4444" />
+                        <ActivityIndicator
+                            size="large"
+                            color={colors.PRIMARY}
+                        />
                     </View>
                 ) : (
                     <FlatList
