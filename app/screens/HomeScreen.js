@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import BlogCard from "../components/BlogCard";
-import colors from "../config/colors";
 import spacing from "../config/spacing";
 
-export default function HomeScreen() {
-    const [blogs, setBlogs] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+const BLOGS = require("../../assets/blogs.json") || [];
 
-    const getBlogs = async () => {
+export default function HomeScreen() {
+    const TOP_RATED_BLOGS = BLOGS?.map((blog) =>
+        blog.rating === 5 ? blog : ""
+    ).filter(Boolean);
+
+    /* const getBlogs = async () => {
         setIsLoading(true);
 
         try {
@@ -29,16 +30,16 @@ export default function HomeScreen() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }; */
 
-    useEffect(() => {
+    /* useEffect(() => {
         getBlogs();
-    }, []);
+    }, []); */
 
     return (
         <SafeAreaView style={{ marginHorizontal: spacing.SM }}>
             <View>
-                {isLoading ? (
+                {/* {isLoading ? (
                     <View
                         style={{
                             alignItems: "center",
@@ -58,7 +59,13 @@ export default function HomeScreen() {
                         keyExtractor={(item) => item._id}
                         showsVerticalScrollIndicator={false}
                     />
-                )}
+                )} */}
+                <FlatList
+                    data={TOP_RATED_BLOGS}
+                    renderItem={({ item }) => <BlogCard blog={item} />}
+                    keyExtractor={(item) => item._id}
+                    showsVerticalScrollIndicator={false}
+                />
             </View>
         </SafeAreaView>
     );

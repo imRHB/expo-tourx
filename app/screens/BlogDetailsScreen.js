@@ -1,7 +1,7 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import spacing from "../config/spacing";
 
@@ -136,8 +136,8 @@ const BlogDetailsScreen = ({ navigation, route }) => {
                                 {item.name}
                             </Text>
                         </View>
-                        <TouchableOpacity
-                            onPress={() => alert("Add blog")}
+                        {/* <TouchableOpacity
+                            onPress={() => navigation.navigate("Modal")}
                             style={{
                                 width: "50%",
                                 paddingVertical: spacing.SM,
@@ -158,7 +158,7 @@ const BlogDetailsScreen = ({ navigation, route }) => {
                             >
                                 Add Blog
                             </Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </View>
             </ScrollView>

@@ -31,7 +31,7 @@ export default function WelcomeScreen({ navigation }) {
                     marginTop: spacing.XS,
                 }}
             >
-                Share Your Tour Experience
+                Explore Tour Experience
             </Text>
             <View style={{ margin: "50%" }} />
             <TouchableOpacity

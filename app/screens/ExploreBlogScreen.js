@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import BlogCard from "../components/BlogCard";
-import colors from "../config/colors";
+import spacing from "../config/spacing";
 
-const ExploreBlogScreen = () => {
-    const [blogs, setBlogs] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+const BLOGS = require("../../assets/blogs.json") || [];
 
-    const getBlogs = async () => {
+export default function ExploreBlogScreen() {
+    /* const getBlogs = async () => {
         setIsLoading(true);
 
         try {
@@ -25,16 +23,16 @@ const ExploreBlogScreen = () => {
         } finally {
             setIsLoading(false);
         }
-    };
+    }; */
 
-    useEffect(() => {
+    /* useEffect(() => {
         getBlogs();
-    }, []);
+    }, []); */
 
     return (
-        <SafeAreaView style={{ marginHorizontal: 8 }}>
+        <SafeAreaView style={{ marginHorizontal: spacing.SM }}>
             <View>
-                {isLoading ? (
+                {/* {BLOGS.length === 0 ? (
                     <View
                         style={{
                             alignItems: "center",
@@ -49,15 +47,19 @@ const ExploreBlogScreen = () => {
                     </View>
                 ) : (
                     <FlatList
-                        data={blogs}
+                        data={BLOGS}
                         renderItem={({ item }) => <BlogCard blog={item} />}
                         keyExtractor={(item) => item._id}
                         showsVerticalScrollIndicator={false}
                     />
-                )}
+                )} */}
+                <FlatList
+                    data={BLOGS}
+                    renderItem={({ item }) => <BlogCard blog={item} />}
+                    keyExtractor={(item) => item._id}
+                    showsVerticalScrollIndicator={false}
+                />
             </View>
         </SafeAreaView>
     );
-};
-
-export default ExploreBlogScreen;
+}
